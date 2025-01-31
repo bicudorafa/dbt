@@ -32,8 +32,9 @@ with DAG(
     run_dbt = BashOperator(
         task_id='run_dbt',
         bash_command=(
-            'dbt run --profiles-dir /path/to/profiles '
-            '--vars \'{"execution_date": "{{ ds }}"}\''
+            'ls -lah /home/airflow/gcs/dags/temp_rafael_rosa/ && '
+            'cd /home/airflow/gcs/dags/temp_rafael_rosa/ && '
+            'dbt run --profiles-dir . --vars \'{"execution_date": "{{ ds }}"}\''
         ),
     )
 
