@@ -1,3 +1,5 @@
+{{ config(tags = ['intermediary']) }}
+
 with current_partition as (
 
     select *

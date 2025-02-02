@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: int_daily_cnpj_metrics
+    description: "TBD"
+    config:
+      tags: ["intermediary"]
+    columns:
+      - name: buyer_tax_id
+        description: 'TBD'
+        tests:
+          - not_null
+          - unique
+  - name: daily_cnpj_metrics
+    description: "TBD"
+    config:
+      tags: ["incremental"]
+    columns:
+      - name: buyer_tax_id
+        description: 'TBD'

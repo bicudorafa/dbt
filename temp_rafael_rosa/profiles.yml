@@ -4,8 +4,8 @@ temp_rafael_rosa: # this needs to match the profile in your dbt_project.yml file
     dev:
       type: bigquery
       method: service-account
-      # keyfile: /Users/bicudorafa/.dbt/dbt-user-creds.json 
-      keyfile: /home/airflow/gcs/data/dbt-user-creds.json # replace this with the full path to your keyfile while deploying to the cloud composer
+      keyfile: /Users/bicudorafa/.dbt/dbt-user-creds.json 
+      # keyfile: /home/airflow/gcs/data/dbt-user-creds.json # replace this with the full path to your keyfile while deploying to the cloud composer
       project: temp-task-rafel-rosa # Replace this with your project id
       dataset: staging # Replace this with dbt_your_name, e.g. dbt_bilbo
       threads: 1

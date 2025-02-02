@@ -1,11 +1,3 @@
-{{
-    config(
-        materialized='incremental',
-        incremental_strategy='merge',
-        unique_key=['ds', 'buyer_tax_id']
-    )
-}}
-
 with cnpjs as (
 
   select *

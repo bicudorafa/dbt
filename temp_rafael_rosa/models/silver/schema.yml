@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: dim_cnpjs
+    description: "TBD"
+    config:
+      tags: ["incremental"]
+    columns:
+      - name: buyer_tax_id
+        description: 'TBD'
+  - name: dim_installments
+    description: "TBD"
+    config:
+      tags: ["incremental"]
+    columns:
+      - name: invoice_id
+        description: 'TBD'
