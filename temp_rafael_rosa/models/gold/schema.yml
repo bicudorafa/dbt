@@ -6,15 +6,81 @@ models:
     config:
       tags: ["intermediary"]
     columns:
+      - name: ds
+        description: "{{ doc('ds') }}"
+        tests:
+          - not_null
       - name: buyer_tax_id
-        description: 'TBD'
+        description: "{{ doc('buyer_tax_id') }}"
         tests:
           - not_null
           - unique
+      - name: m_total_invoices
+        description: "{{ doc('m_total_invoices') }}"
+        tests:
+          - not_null
+      - name: m_invoices_paid
+        description: "{{ doc('m_invoices_paid') }}"
+        tests:
+          - not_null
+      - name: m_invoices_open
+        description: "{{ doc('m_invoices_open') }}"
+        tests:
+          - not_null
+      - name: m_invoices_late_28d
+        description: "{{ doc('m_invoices_late_28d') }}"
+        tests:
+          - not_null
+      - name: m_total_original_amount_in_cents
+        description: "{{ doc('m_total_original_amount_in_cents') }}"
+        tests:
+          - not_null
+      - name: m_expected_amount_in_cents
+        description: "{{ doc('m_expected_amount_in_cents') }}"
+        tests:
+          - not_null
+      - name: m_paid_amount_in_cents
+        description: "{{ doc('m_paid_amount_in_cents') }}"
+        tests:
+          - not_null
+      - name: m_amount_paid
+        description: "{{ doc('m_amount_paid') }}"
+        tests:
+          - not_null
+      - name: m_amount_open
+        description: "{{ doc('m_amount_open') }}"
+        tests:
+          - not_null
+      - name: m_amount_late_28d
+        description: "{{ doc('m_amount_late_28d') }}"
+        tests:
+          - not_null
   - name: daily_cnpj_metrics
     description: "TBD"
     config:
       tags: ["incremental"]
     columns:
+      - name: ds
+        description: "{{ doc('ds') }}"
       - name: buyer_tax_id
-        description: 'TBD'
+        description: "{{ doc('buyer_tax_id') }}"
+      - name: m_total_invoices
+        description: "{{ doc('m_total_invoices') }}"
+      - name: m_invoices_paid
+        description: "{{ doc('m_invoices_paid') }}"
+      - name: m_invoices_open
+        description: "{{ doc('m_invoices_open') }}"
+      - name: m_invoices_late_28d
+        description: "{{ doc('m_invoices_late_28d') }}"
+      - name: m_total_original_amount_in_cents
+        description: "{{ doc('m_total_original_amount_in_cents') }}"
+      - name: m_expected_amount_in_cents
+        description: "{{ doc('m_expected_amount_in_cents') }}"
+      - name: m_paid_amount_in_cents
+        description: "{{ doc('m_paid_amount_in_cents') }}"
+      - name: m_amount_paid
+        description: "{{ doc('m_amount_paid') }}"
+      - name: m_amount_open
+        description: "{{ doc('m_amount_open') }}"
+      - name: m_amount_late_28d
+        description: "{{ doc('m_amount_late_28d') }}"

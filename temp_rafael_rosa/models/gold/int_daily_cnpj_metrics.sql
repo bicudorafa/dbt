@@ -14,7 +14,7 @@ with cnpjs as (
 
   select
     ds,
-    buyer_main_tax_id,
+    buyer_tax_id,
     count(invoice_id) as m_total_invoices,
     count(case when paid_date is not null then invoice_id end) as m_invoices_paid,
     count(case
@@ -64,4 +64,4 @@ select
 from cnpjs
 left join daily_metrics
   on cnpjs.ds = daily_metrics.ds
-  and cnpjs.buyer_tax_id = daily_metrics.buyer_main_tax_id
+  and cnpjs.buyer_tax_id = daily_metrics.buyer_tax_id

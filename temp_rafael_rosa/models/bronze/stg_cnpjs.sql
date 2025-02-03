@@ -3,7 +3,7 @@
 with current_partition as (
 
     select *
-    from `temp-task-rafel-rosa.staging.raw_cnpjs`
+    from {{ source('staging', 'raw_cnpjs') }}
     where ds = DATE '{{ var("execution_date") }}'
 
 )

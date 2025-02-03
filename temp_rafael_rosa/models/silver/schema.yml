@@ -2,16 +2,68 @@ version: 2
 
 models:
   - name: dim_cnpjs
-    description: "TBD"
+    description: "Dimensional Table for CNPJs. It has 1 row per CNPJ per Daily Partition (ds)"
     config:
       tags: ["incremental"]
     columns:
+      - name: ds
+        description: "{{ doc('ds') }}"
       - name: buyer_tax_id
-        description: 'TBD'
+        description: "{{ doc('buyer_tax_id') }}"
+      - name: share_capital
+        description: "{{ doc('share_capital') }}"
+      - name: company_size
+        description: "{{ doc('company_size') }}"
+      - name: legal_nature
+        description: "{{ doc('legal_nature') }}"
+      - name: simples_option
+        description: "{{ doc('simples_option') }}"
+      - name: is_mei
+        description: "{{ doc('is_mei') }}"
+      - name: is_main_company
+        description: "{{ doc('is_main_company') }}"
+      - name: company_status
+        description: "{{ doc('company_status') }}"
+      - name: is_active
+        description: "{{ doc('is_active') }}"
+      - name: zipcode
+        description: "{{ doc('zipcode') }}"
+      - name: main_cnae
+        description: "{{ doc('main_cnae') }}"
+      - name: state
+        description: "{{ doc('state') }}"
+      - name: uf
+        description: "{{ doc('uf') }}"
+      - name: city
+        description: "{{ doc('city') }}"
+      - name: created_at
+        description: "{{ doc('created_at') }}"
+      - name: updated_at
+        description: "{{ doc('updated_at') }}"
   - name: dim_installments
-    description: "TBD"
+    description: "Dimensional Table for Installments. It has 1 row per CNPJ per Daily Partition (ds)"
     config:
       tags: ["incremental"]
     columns:
+      - name: ds
+        description: "{{ doc('ds') }}"
+      - name: asset_id
+        description: "{{ doc('asset_id') }}"
       - name: invoice_id
-        description: 'TBD'
+        description: "{{ doc('invoice_id') }}"
+      - name: buyer_tax_id
+        description: "{{ doc('buyer_tax_id') }}"
+      - name: original_amount_in_cents
+        description: "{{ doc('original_amount_in_cents') }}"
+      - name: expected_amount_in_cents
+        description: "{{ doc('expected_amount_in_cents') }}"
+      - name: paid_amount_in_cents
+        description: "{{ doc('paid_amount_in_cents') }}"
+      - name: due_date
+        description: "{{ doc('due_date') }}"
+      - name: paid_date
+        description: "{{ doc('paid_date') }}"
+      - name: invoice_issue_date
+        description: "{{ doc('invoice_issue_date') }}"
+      - name: buyer_main_tax_id
+        description: "{{ doc('buyer_main_tax_id') }}"
