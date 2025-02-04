@@ -1,0 +1,19 @@
+service: default
+runtime: python311
+handlers:
+  # Maps the root URL (/) to the static file target/index.html.
+  # It specifies that the file should be both served statically and uploaded.
+  - url: /
+    static_files: target/index.html
+    upload: target/index.html
+  # Specifies that any URL matches should look for files in the target directory. 
+  - url: /
+    static_dir: target
+  # Fallback Handler
+  # Matches all other URLs (/.*) to your application.
+  # It enforces secure connections and issues a permanent redirect (redirect_http_response_code: 301).
+  # The `script: auto` ask to App Engine to automatically determine how to handle the request.
+  - url: /.*
+    secure: always
+    redirect_http_response_code: 301
+    script: auto

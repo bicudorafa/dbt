@@ -6,4 +6,5 @@ readme = "README.md"
 requires-python = "==3.11.8"
 dependencies = [
     "dbt-bigquery>=1.9.1",
+    "gcloud>=0.18.3",
 ]

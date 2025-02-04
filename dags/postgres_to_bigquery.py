@@ -15,14 +15,20 @@ default_args = {
 }
 
 with DAG(
-    "postgres_to_bigquery_incremental",
+    "postgres_to_bigquery",
     default_args=default_args,
     schedule_interval="@daily",
     catchup=False,
 ) as dag:
     
 
-    start_extraction = DummyOperator(task_id='start_extraction')
+    extract_cnpjs = DummyOperator(task_id='extract_cnpjs')
+
+    load_cnpjs_bq = DummyOperator(task_id='load_cnpjs_bq')
+
+    extract_installments = DummyOperator(task_id='extract_installments')
+
+    load_installments_bq = DummyOperator(task_id='load_installments_bq')
     
     # extract_companies = PostgresToGCSOperator(
     #     task_id="extract_cnpjs",
@@ -62,9 +68,5 @@ with DAG(
     #     time_partitioning={"type": "DAY", "field": "ds"},
     # )
  
-    # extract_companies >> load_companies_bq
-    # extract_installments >> load_installments_bq
-
-    end_extraction = DummyOperator(task_id='end_extraction')
-
-    start_extraction >> end_extraction
+    extract_cnpjs >> load_cnpjs_bq
+    extract_installments >> load_installments_bq

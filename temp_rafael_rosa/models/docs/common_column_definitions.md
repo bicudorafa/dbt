@@ -168,13 +168,13 @@ Total number of invoices that were paid on a given day.
 
 {% docs m_invoices_open %}
 
-Total number of invoices that are past due and remain unpaid.
+Total number of open invoices that are not due and remain unpaid.
 
 {% enddocs %}
 
 {% docs m_invoices_late_28d %}
 
-Total number of invoices that are overdue by less than 28 days.
+Total number of invoices that are overdue by more than 28 days.
 
 {% enddocs %}
 
@@ -204,12 +204,12 @@ Sum of the original amounts in cents for invoices that have been paid.
 
 {% docs m_amount_open %}
 
-Sum of the original amounts in cents for invoices that are past due and remain unpaid.
+Sum of original cent amounts for open invoices that are not due and remain unpaid.
 
 {% enddocs %}
 
 {% docs m_amount_late_28d %}
 
-Sum of the original amounts in cents for invoices that are overdue by less than 28 days.
+Sum of the original amounts in cents for invoices that are overdue by more than 28 days.
 
 {% enddocs %}

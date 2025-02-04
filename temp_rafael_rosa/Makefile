@@ -1,3 +1,11 @@
+auth-gcloud:
+	gcloud auth application-default login
+
+run-backfill-composer:
+	gcloud composer environments run test \
+    	--location us-central1 \
+        dags trigger -- dbt_transformation_dag --exec-date 2024-07-20T00:00:01
+
 run-bronze-intermediary:
 	dbt run --select "tag:intermediary,models/bronze/" --vars '{"execution_date": "2024-07-20"}'
 

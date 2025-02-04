@@ -34,7 +34,6 @@ with DAG(
         bash_command=(
             'dbt build -s "tag:intermediary,models/bronze/" --vars \'{"execution_date": "{{ ds }}"}\''
         ),
-        cwd='/home/airflow/gcs/dags/temp_rafael_rosa/',
     )
 
     silver_incremental = BashOperator(
@@ -42,7 +41,6 @@ with DAG(
         bash_command=(
             'dbt build -s "tag:incremental,models/silver/" --vars \'{"execution_date": "{{ ds }}"}\''
         ),
-        cwd='/home/airflow/gcs/dags/temp_rafael_rosa/',
     )
 
     gold_intermediary = BashOperator(
@@ -50,7 +48,6 @@ with DAG(
         bash_command=(
             'dbt build -s "tag:incremental,models/silver/" --vars \'{"execution_date": "{{ ds }}"}\''
         ),
-        cwd='/home/airflow/gcs/dags/temp_rafael_rosa/',
     )
 
     gold_incremental = BashOperator(
@@ -58,7 +55,14 @@ with DAG(
         bash_command=(
             'dbt build -s "tag:incremental,models/silver/" --vars \'{"execution_date": "{{ ds }}"}\''
         ),
-        cwd='/home/airflow/gcs/dags/temp_rafael_rosa/',
     )
 
-    wait_for_extraction >> bronze_intermediary >> silver_incremental >> gold_intermediary >> gold_incremental
+    generate_docs = BashOperator(
+        task_id='generate_docs',
+        bash_command='dbt docs generate --vars \'{"execution_date": "{{ ds }}"}\'',
+    )
+
+    (
+        wait_for_extraction >> bronze_intermediary >> silver_incremental >> 
+        gold_intermediary >> gold_incremental >> generate_docs
+    )

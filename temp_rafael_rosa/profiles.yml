@@ -1,14 +1,22 @@
-temp_rafael_rosa: # this needs to match the profile in your dbt_project.yml file
-  target: dev
+temp_rafael_rosa:  # This should match the profile name in your dbt_project.yml
+  target: "{{ env_var('DBT_TARGET', 'dev') }}"  # Set the default target
   outputs:
     dev:
       type: bigquery
-      method: service-account
-      keyfile: /Users/bicudorafa/.dbt/dbt-user-creds.json 
-      # keyfile: /home/airflow/gcs/data/dbt-user-creds.json # replace this with the full path to your keyfile while deploying to the cloud composer
-      project: temp-task-rafel-rosa # Replace this with your project id
-      dataset: staging # Replace this with dbt_your_name, e.g. dbt_bilbo
+      method: oauth
+      project: temp-task-rafel-rosa
+      dataset: staging
       threads: 1
+      timeout_seconds: 300
+      location: US
+      priority: interactive
+    prod:
+      type: bigquery
+      method: service-account
+      keyfile: /home/airflow/gcs/data/dbt-user-creds.json # replace this with the full path to your keyfile while deploying to the cloud composer
+      project: temp-task-rafel-rosa  # Replace with your production project ID
+      dataset: staging  # Replace with your production dataset
+      threads: 3
       timeout_seconds: 300
       location: US
       priority: interactive
